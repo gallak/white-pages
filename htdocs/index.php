@@ -42,7 +42,7 @@ if (!isset($results_display_mode)) $results_display_mode = "boxes";
 if (!isset($use_datatables)) $use_datatables = true;
 
 # Assign configuration variables
-$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter, 'ldap_group_filter' => $ldap_group_filter));
+$smarty->assign('ldap_params',array('ldap_url' => $ldap_url, 'ldap_starttls' => $ldap_starttls, 'ldap_binddn' => $ldap_binddn, 'ldap_bindpw' => $ldap_bindpw, 'ldap_user_base' => $ldap_user_base, 'ldap_user_filter' => $ldap_user_filter, 'ldap_group_filter' => $ldap_group_filter,'ldap_structure_filter' => $ldap_structure_filter,'ldap_structure_base' => $ldap_structure_base));
 $smarty->assign('logo',$logo);
 $smarty->assign('background_image',$background_image);
 $smarty->assign('hover_effect',$hover_effect);
@@ -53,6 +53,8 @@ $smarty->assign('use_quick_search',$use_quick_search);
 $smarty->assign('use_advanced_search',$use_advanced_search);
 $smarty->assign('use_gallery',$use_gallery);
 $smarty->assign('use_directory',$use_directory);
+$smarty->assign('use_sympa',$use_sympa);
+$smarty->assign('use_supannentite',$use_supannentite);
 $smarty->assign('use_csv',$use_csv);
 $smarty->assign('use_vcard',$use_vcard);
 $smarty->assign('use_datatables', $use_datatables);
@@ -90,6 +92,9 @@ if ( $page === "search" and !$use_quick_search ) { $page = "welcome"; }
 if ( $page === "advancedsearch" and !$use_advanced_search ) { $page = "welcome"; }
 if ( $page === "directory" and !$use_directory ) { $page = "welcome"; }
 if ( $page === "gallery" and !$use_gallery ) { $page = "welcome"; }
+if ( $page === "supannentite" and !$use_supannentite ) { $page = "welcome"; }
+
+
 if ( file_exists($page.".php") ) { require_once($page.".php"); }
 $smarty->assign('page',$page);
 

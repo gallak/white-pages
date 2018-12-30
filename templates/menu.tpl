@@ -31,6 +31,14 @@
                   <a href="index.php?page=gallery"><i class="fa fa-fw fa-user-circle"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
+
+                {if $use_supannentite}
+                <li {if $page=="supannentite"}class="active"{/if}>
+                  <a href="index.php?page=supannentite"><i class="fa fa-fw fa-building-o"></i> {$msg_supannentite}</a>
+                </li>
+                {/if}
+
+
               </ul>
               {if $use_quick_search}
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
