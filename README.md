@@ -1,30 +1,34 @@
+# White pages ESR edition
+
+White pages ESR is an specific version for Educationnal Science and Research people.
+You can use Supann features ( specific for French Educationnal Research and Science) and sympa mailing list features
+
+Sympa support is quit poor, but enough for the moment.
+Special accreditation must be set ( please take care of privacy of your mailing list
 # White Pages
 
-[![Build Status](https://travis-ci.org/ltb-project/white-pages.svg?branch=master)](https://travis-ci.org/ltb-project/white-pages)
+
+White Pages ESR is based on white-pages 0.2
+
+You can see it at https://github.com/ltb-project/white-pages
+Thanks to Clement !
 
 ## Presentation
 
-White Pages is a PHP application that allows users to search and display data stored in an LDAP directory.
+White Pages ESR is a PHP application that allows users to search and display data stored in an LDAP directory.
+It can fetch Sympa [http://www.sympa.org] Mailing list, subject homepage and subcribers trough the SOAP services
+It can show supann attributes v2009 ( use in french scientific environment) : [https://services.renater.fr/documentation/supann/index]
 
-The application can be used on standard LDAPv3 directories and Active Directory, as all searched attributes can be set in configuration.
-
-![Screenshot](https://ltb-project.org/_media/documentation/white-pages/0.2/wp_0_2_directory.png?w=800&h=495&tok=859143)
-![Screenshot](https://ltb-project.org/_media/documentation/white-pages/0.2/wp_0_2_full_display.png?w=800&h=553&tok=fec757)
-
-
+It use all features of original whites-pages like
 
 It has the following features:
-* Quick search: a simple input in menu bar searching on some classic attributes
-* Advanced search: a full form to search on several attributes
+* Quick search: a simple input in menu bar searching on some classic attributes  ( only for user and group, not for sympa mailing and supann structure)
+* Advanced search: a full form to search on several attributes ( idem as above)
 * Directory: display of all entries in a table form
 * Gallery: display of all entries with their photo
 * Search and display groups and members
 * Export results as CSV
 * Export entry as vCard
-
-## Demonstration
-
-Check [Star Pages](http://ltb-project.org/star-pages/), an online demonstration of LDAP Tool Box White Pages.
 
 ## Prerequisite
 
@@ -32,12 +36,10 @@ Check [Star Pages](http://ltb-project.org/star-pages/), an online demonstration 
 * PHP extensions required:
   * php-ldap
   * php-gd
+  * php-soap (for sympa features)
 * Smarty 3
 
 ## Documentation
 
 Documentation is available on http://ltb-project.org/wiki/documentation/white-pages
 
-## Download
-
-Tarballs and packages for Debian and Red Hat are available on http://ltb-project.org/wiki/download#white_pages
