@@ -4,6 +4,34 @@
 # English
 #==============================================================================
 
+$messages['sympa'] = "Mailing lists";
+$messages['label_listAddress'] = "List Address";
+$messages['label_subject'] = "Subject";
+$messages['label_homepage'] = "Home Page";
+$messages['label_detail'] = "More Details";
+$messages['sympa_list_info'] = "List Informations";
+$messages['sympa_list_address'] = "List Address";
+$messages['sympa_list_subject'] = "List Subject";
+$messages['sympa_list_homepage'] = "List HomePage";
+$messages['sympa_list_subscriber'] = "Subscribers";
+
+$messages['label_email'] = "E-mail";
+$messages['label_gecos'] = "Informations";
+$messages['label_isOwner'] = "is owner";
+
+
+$messages['label_edupersonaffiliation'] = "Affiliation";
+$messages['label_supannentiteaffectation'] = "Affectation";
+$messages['label_supannentiteaffectationprincipale'] = "Principal Affectation";
+
+$messages['label_supanncodeentite'] = "Entity Code";
+$messages['label_supanncodeentiteparent'] = "Parent Code Entity";
+$messages['label_ou'] = "Unity";
+$messages['supannentite'] = "Entities";
+$messages['supann_entite_daughter'] = "Sub entities";
+$messages['supann_entite_members'] = "Members";
+
+
 $messages['advancedsearch'] = "Advanced search";
 $messages['displayentry'] = "Display entry";
 $messages['dnrequired'] = "Entry identifier required";

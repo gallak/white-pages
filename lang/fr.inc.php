@@ -67,5 +67,29 @@ $messages['todate'] = "Jusqu'au";
 $messages['true'] = "Oui";
 $messages['user_object'] = "Utilisateurs";
 $messages['welcome'] = "Bienvenue sur les pages blanches LDAP Tool Box";
+$messages['sympa'] = "Listes de diffusion";
+$messages['label_listAddress'] = "Address";
+$messages['label_subject'] = "Sujet";
+$messages['label_homepage'] = "Page d'accueil";
+$messages['label_detail'] = "Plus de détails";
+$messages['label_email'] = "E-mail";
+$messages['label_gecos'] = "Informations";
+$messages['label_isOwner'] = "est propriétaire";
+$messages['sympa_list_info'] = "Informations de la list";
+$messages['sympa_list_address'] = "Adresse";
+$messages['sympa_list_subject'] = "Sujet";
+$messages['sympa_list_homepage'] = "Page d'accueil";
+$messages['sympa_list_subscriber'] = "Abonnés";
+
+$messages['label_edupersonaffiliation'] = "Affiliation";
+$messages['label_supannentiteaffectation'] = "Affectation";
+$messages['label_supannentiteaffectationprincipale'] = "Affectation Principale";
+
+$messages['label_supanncodeentite'] = "Code Entité";
+$messages['label_supanncodeentiteparent'] = "Code Entité Parente";
+$messages['label_ou'] = "Unité";
+$messages['supannentite'] = "Entitées";
+$messages['supann_entite_daughter'] = "Entitées Filles";
+$messages['supann_entite_members'] = "Membres";
 
 ?>
