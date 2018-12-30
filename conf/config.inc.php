@@ -153,6 +153,8 @@ $custom_css = "";
 # Debug mode
 $debug = false;
 
+
+
 # Smarty
 define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
 
@@ -160,5 +162,42 @@ define("SMARTY", "/usr/share/php/smarty3/Smarty.class.php");
 if (file_exists (dirname (__FILE__) . '/config.inc.local.php')) {
     include dirname (__FILE__) . '/config.inc.local.php';
 }
+
+
+
+#
+# SPECIFIC SUPANN
+#
+
+$use_supannentite = true;
+if ($use_supannentite) {
+  $ldap_structure_base = "ou=structures,".$ldap_base;
+  $ldap_structure_filter = "(supanncodeentite=*)";
+  $supann_attributes = ['dn','description','ou','l','postOfficeBox','postalCode','st','street','telephoneNumber','facsimileTelephoneNumber','cn','supannCodeEntiteParent','postalAddress','supannCodeEntite'];
+  $attributes_map_supann = array(
+    'edupersonaffiliation' => array( 'attribute' => 'edupersonaffiliation', 'faclass' => 'users', 'type' => 'text' ),
+    'supannentiteaffectation' => array( 'attribute' => 'supannentiteaffectation', 'faclass' => 'users', 'type' => 'entitie_dn_link' ),
+    'supannentiteaffectationprincipale' => array( 'attribute' => 'supannentiteaffectationprincipale', 'faclass' => 'users', 'type' => 'entitie_dn_link' ),
+    'supanncodeentiteparent' => array( 'attribute' => 'supanncodeentiteparent', 'faclass' => 'building-o', 'type' => 'entitie_dn_link' ),
+    'supanncodeentite' => array( 'attribute' => 'supanncodeentite', 'faclass' => 'building-o', 'type' => 'entitie_dn_link' ),
+    'ou' => array( 'attribute' => 'ou', 'faclass' => 'building-o', 'type' => 'text' ),
+  );
+
+  $display_items_supann=array('supanncodeentite','supannentiteaffectationprincipale', 'supannentiteaffectation');
+  $directory_items_supann=array('supannentiteaffectationprincipale');
+  $supannentite_items = array('supanncodeentite', 'ou', 'description','supanncodeentiteparent');
+  $supannentite_linkto = array('supanncodeentite', 'supanncodeentiteparent');
+  $supannentite_sortby = "supannCodeEntite";
+  $supannentite_show_undefined = false;
+  $supannentite_truncate_value_after = 30;
+
+
+
+  # concatenate with core
+  $attributes_map = array_merge($attributes_map, $attributes_map_supann);
+  $display_items = array_merge($display_items,$display_items_supann);
+  $directory_items = array_merge($directory_items, $directory_items_supann);
+}
+
 
 ?>
