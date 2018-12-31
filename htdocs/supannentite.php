@@ -53,6 +53,7 @@ if ($ldap) {
     }
 }
 
+$smarty->assign("supann_entite_nomenclature_array",$supannentite_nomenclature_array);
 $smarty->assign("nb_entries", $nb_entries);
 $smarty->assign("entries", $entries);
 $smarty->assign("size_limit_reached", $size_limit_reached);

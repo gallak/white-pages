@@ -17,10 +17,6 @@
 	
 
 
-
-
-
-
 {if $type eq 'tel'}
     <a href="tel:{$value}" rel="nofollow" class="link-phone" title="{$msg_tooltip_phoneto}">{$value|truncate:{$truncate_value_after}}</a><br />
 {/if}
@@ -44,6 +40,11 @@
 	{$link = "{$value},{$ldap_params.ldap_structure_base}"}
     <a href="index.php?page=display_supann_entite&dn=supanncodeentite={$link|escape:'url'}&search={$search}">{$value}</a><br />
 
+{/if}
+
+
+{if $type eq 'entitie_type'}
+    {get_entite_label($value,$supann_entite_nomenclature_array)}
 {/if}
 
 

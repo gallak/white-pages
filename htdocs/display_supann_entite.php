@@ -20,6 +20,7 @@ if ($result === "") {
 
     require_once("../conf/config.inc.php");
     require_once("../lib/ldap.inc.php");
+    require_once("../lib/supann.inc.php");
 
     # Connect to LDAP
     $ldap_connection = wp_ldap_connect($ldap_url, $ldap_starttls, $ldap_binddn, $ldap_bindpw);
@@ -125,6 +126,8 @@ if ($result === "") {
 
     }
 }
+
+$smarty->assign("supann_entite_nomenclature_array",$supannentite_nomenclature_array);
 $smarty->assign("show_subentities",$has_subentities);
 $smarty->assign("show_members",$has_members);
 $smarty->assign("entry", $entry[0]);

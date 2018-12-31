@@ -19,6 +19,10 @@
 #
 #==============================================================================
 
+
+#require_once("/var/www/html/white-pages/lib/supann.inc.php");
+
+
 #==============================================================================
 # All the default values are kept here, you should not modify it but use
 # config.inc.local.php file instead to override the settings from here.
@@ -171,6 +175,7 @@ if (file_exists (dirname (__FILE__) . '/config.inc.local.php')) {
 
 $use_supannentite = true;
 if ($use_supannentite) {
+  require_once("../lib/supann.inc.php");
   $ldap_structure_base = "ou=structures,".$ldap_base;
   $ldap_structure_filter = "(supanncodeentite=*)";
   $supann_attributes = ['dn','description','ou','l','postOfficeBox','postalCode','st','street','telephoneNumber','facsimileTelephoneNumber','cn','supannCodeEntiteParent','postalAddress','supannCodeEntite'];
@@ -181,16 +186,19 @@ if ($use_supannentite) {
     'supanncodeentiteparent' => array( 'attribute' => 'supanncodeentiteparent', 'faclass' => 'building-o', 'type' => 'entitie_dn_link' ),
     'supanncodeentite' => array( 'attribute' => 'supanncodeentite', 'faclass' => 'building-o', 'type' => 'entitie_dn_link' ),
     'ou' => array( 'attribute' => 'ou', 'faclass' => 'building-o', 'type' => 'text' ),
+    'supanntypeentite' => array('attribute' => 'supanntypeentite','faclass' => 'info', 'type' => 'entitie_type'),
   );
 
-  $display_items_supann=array('supanncodeentite','supannentiteaffectationprincipale', 'supannentiteaffectation');
+  $display_items_supann=array('supanncodeentite','supannentiteaffectationprincipale', 'supannentiteaffectation','supanntypeentite');
   $directory_items_supann=array('supannentiteaffectationprincipale');
-  $supannentite_items = array('supanncodeentite', 'ou', 'description','supanncodeentiteparent');
+  $supannentite_items = array('supanncodeentite', 'ou', 'description','supanncodeentiteparent','supanntypeentite');
   $supannentite_linkto = array('supanncodeentite', 'supanncodeentiteparent');
   $supannentite_sortby = "supannCodeEntite";
   $supannentite_show_undefined = false;
   $supannentite_truncate_value_after = 30;
+  $supannentite_nomenclature_prefix="/etc/fusiondirectory/supann/entite_";
 
+  $supannentite_nomenclature_array = load_supanntypeentite_nomenclature($supannentite_nomenclature_prefix);
 
 
   # concatenate with core

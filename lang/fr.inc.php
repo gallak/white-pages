@@ -88,6 +88,7 @@ $messages['label_supannentiteaffectationprincipale'] = "Affectation Principale";
 $messages['label_supanncodeentite'] = "Code Entité";
 $messages['label_supanncodeentiteparent'] = "Code Entité Parente";
 $messages['label_ou'] = "Unité";
+$messages['label_supanntypeentite'] = "Nature";
 $messages['supannentite'] = "Entitées";
 $messages['supann_entite_daughter'] = "Entitées Filles";
 $messages['supann_entite_members'] = "Membres";
