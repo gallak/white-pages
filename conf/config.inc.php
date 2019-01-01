@@ -196,9 +196,9 @@ if ($use_supannentite) {
   $supannentite_sortby = "supannCodeEntite";
   $supannentite_show_undefined = false;
   $supannentite_truncate_value_after = 30;
-  $supannentite_nomenclature_prefix="/etc/fusiondirectory/supann/entite_";
+  $supann_nomenclature_dir="/etc/fusiondirectory/supann";
 
-  $supannentite_nomenclature_array = load_supanntypeentite_nomenclature($supannentite_nomenclature_prefix);
+  $supannentite_nomenclature_array = load_supann_nomenclature($supann_nomenclature_dir,"entite");
 
 
   # concatenate with core
