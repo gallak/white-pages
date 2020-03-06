@@ -35,6 +35,7 @@ $ldap_bindpw = "secret";
 $ldap_base = "dc=example,dc=com";
 $ldap_user_base = "ou=users,".$ldap_base;
 $ldap_user_filter = "(objectClass=inetOrgPerson)";
+#$ldap_user_regex = "/,ou=users,/i";
 $ldap_group_base = "ou=groups,".$ldap_base;
 $ldap_group_filter = "(|(objectClass=groupOfNames)(objectClass=groupOfUniqueNames))";
 $ldap_size_limit = 100;
@@ -74,6 +75,8 @@ $attributes_map = array(
     'uniquemember' => array( 'attribute' => 'uniquemember', 'faclass' => 'user', 'type' => 'usergroup_dn_link' ),
 );
 
+$attributes_list = array();
+
 # Quick search
 $use_quick_search = true;
 $quick_search_attributes = array('uid', 'cn', 'mail');
@@ -107,6 +110,7 @@ $display_items = array('firstname', 'lastname', 'title', 'businesscategory', 'em
 $display_title = "fullname";
 $display_show_undefined = false;
 $display_group_items = array('fullname', 'description', 'member', 'uniquemember', 'memberof');
+#$display_edit_link = "http://ldapadmin.example.com/?dn={dn}
 
 # Gallery
 $use_gallery = true;
@@ -114,14 +118,19 @@ $gallery_title = "fullname";
 $gallery_sortby = "lastname";
 $gallery_bootstrap_column_class = "col-xs-6 col-sm-4 col-md-3";
 $gallery_truncate_title_after = 25;
+#$gallery_user_filter = "(&".$ldap_user_filter."(jpegPhoto=*))";
 
 # Directory
 $use_directory = true;
 $directory_items = array('firstname', 'lastname', 'mail', 'organization');
+$directory_group_items = array('fullname', 'description');
 $directory_linkto = array('firstname', 'lastname');
+$directory_group_linkto = array('fullname');
 $directory_sortby = "lastname";
+$directory_group_sortby = "fullname";
 $directory_show_undefined = false;
 $directory_truncate_value_after = 30;
+$directory_display_search_objects = true;
 
 # CSV
 $use_csv = true;
@@ -153,6 +162,9 @@ $logo = "images/ltb-logo.png";
 $background_image = "images/unsplash-space.jpeg";
 $hover_effect = "grow";
 $custom_css = "";
+$display_footer = true;
+$default_page = "welcome";
+#$logout_link = "http://auth.example.com/logout";
 
 # Debug mode
 $debug = false;

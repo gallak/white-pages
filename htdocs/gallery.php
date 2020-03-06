@@ -24,7 +24,16 @@ if ($ldap) {
     $attributes[] = $attributes_map[$gallery_sortby]['attribute'];
 
     # Search for users
-    $search = ldap_search($ldap, $ldap_user_base, $ldap_user_filter, $attributes, 0, $ldap_size_limit);
+    $gallery_filter = $ldap_user_filter;
+    if (isset($gallery_user_filter) ) {
+        $gallery_filter = $gallery_user_filter;
+    }
+    # Search for users in group
+    if (isset($_GET['groupdn'])) {
+        $gallery_filter = "(&".$gallery_filter."(memberOf=".$_GET['groupdn']."))";
+    }
+
+    $search = ldap_search($ldap, $ldap_user_base, $gallery_filter, $attributes, 0, $ldap_size_limit);
 
     $errno = ldap_errno($ldap);
 

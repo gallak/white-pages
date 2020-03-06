@@ -36,9 +36,7 @@
                         <td>
                         {if ({$entry.$attribute.0})}
                             {foreach $entry.{$attribute} as $value}
-                            {if $value@index ne 0}
                             {include 'value_displayer.tpl' value=$value type=$type truncate_value_after=10000}
-                            {/if}
                             {/foreach}
                         {else}
                             <i>{$msg_notdefined}</i><br />
@@ -50,9 +48,14 @@
                 </div>
 
             </div>
-{if {$use_vcard}}
+{if {$use_vcard} || {$edit_link}}
             <div class="panel-footer text-center">
+{if {$use_vcard}}
                 <a href="index.php?page=display&dn={$entry.dn|escape:'url'}&search={$search}&vcard=1" class="btn btn-info" role="button"><i class="fa fa-fw fa-download"></i> {$msg_downloadvcard}</a>
+{/if}
+{if {$edit_link}}
+                <a href="{$edit_link}" class="btn btn-info" role="button"><i class="fa fa-fw fa-edit"></i> {$msg_editentry}</a>
+{/if}
             </div>
 
 {/if}

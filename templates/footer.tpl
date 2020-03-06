@@ -1,5 +1,9 @@
 </div>
 
+{if $display_footer}
+<div id="footer">LDAP Tool Box White Pages - version {$version}</div>
+{/if}
+
 <script src="vendor/jquery/js/jquery-1.10.2.min.js"></script>
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <script src="vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js"></script>
@@ -24,7 +28,7 @@
     {if $datatables_page_length_choices}
           "lengthMenu": [
               [ {$datatables_page_length_choices} ],
-              [ {$datatables_page_length_choices|replace:'-1':($msg_pager_all|string_format:'"%s"') } ]
+              [ {$datatables_page_length_choices|replace:'-1':($msg_pager_all|string_format:'"%s"') nofilter} ]
           ],
     {/if}
     {if $datatables_page_length_default}

@@ -1,12 +1,13 @@
 <?php
 /*
- * Display an entry 
- */ 
+ * Display an entry
+ */
 
 $result = "";
 $dn = "";
 $entry = "";
 $type = "";
+$edit_link = "";
 
 if (isset($_GET["dn"]) and $_GET["dn"]) {
     $dn = $_GET["dn"];
@@ -28,8 +29,22 @@ if ($result === "") {
     $result = $ldap_connection[1];
 
     # Find object type
-    if ( preg_match( '/'.$ldap_group_base.'$/i', $dn) ) { $type = "group"; }
-    else { $type = "user"; }
+    if (isset($_POST['type'])) {
+        $type = $_POST['type'];
+    } else if (isset($ldap_user_regex)) {
+        if ( preg_match( $ldap_user_regex, $dn) ) {
+            $type = "user";
+        } else {
+            $type = "group";
+        }
+    } else {
+        if ( preg_match( '/'.$ldap_user_base.'$/i', $dn) ) {
+            $type = "user";
+        }
+        else {
+            $type = "group";
+        }
+    }
 
     if ($ldap) {
 
@@ -63,6 +78,17 @@ if ($result === "") {
             $entry = ldap_get_entries($ldap, $search);
         }
 
+        # Sort attributes values
+        foreach ($entry[0] as $attr => $values) {
+            if ( $values['count'] > 1 ) {
+                asort($values);
+            }
+            if ( isset($values['count']) ) {
+                unset($values['count']);
+            }
+            $entry[0][$attr] = $values;
+        }
+
 	if ($use_vcard and $_GET["vcard"]) {
             require_once("../lib/vcard.inc.php");
             $vcard_file = $entry[0][$attributes_map[$vcard_file_identifier]['attribute']][0].".".$vcard_file_extension;
@@ -70,6 +96,11 @@ if ($result === "") {
             echo print_vcard($entry[0], $attributes_map, $vcard_map, $vcard_version);
             die;
         }
+
+	if ($display_edit_link) {
+		# Replace {dn} in URL
+		$edit_link = str_replace("{dn}", urlencode($dn), $display_edit_link);
+	}
     }
 }
 
@@ -79,4 +110,6 @@ $smarty->assign("card_title", $display_title);
 $smarty->assign("card_items", $search_items);
 $smarty->assign("show_undef", $display_show_undefined);
 $smarty->assign("type", $type);
+
+$smarty->assign("edit_link", $edit_link);
 ?>

@@ -1,6 +1,11 @@
 <?php
 
 #==============================================================================
+# Version
+#==============================================================================
+$version = 0.3;
+
+#==============================================================================
 # Configuration
 #==============================================================================
 require_once("../conf/config.inc.php");
@@ -31,11 +36,16 @@ if (file_exists("../conf/$lang.inc.php")) {
 require_once(SMARTY);
 
 $smarty = new Smarty();
-
+$smarty->escape_html = true;
 $smarty->setTemplateDir('../templates/');
 $smarty->setCompileDir('../templates_c/');
 $smarty->setCacheDir('../cache/');
 $smarty->debugging = $debug;
+
+# Set debug for LDAP
+if ($debug) {
+    ldap_set_option(NULL, LDAP_OPT_DEBUG_LEVEL, 7);
+}
 
 # Default configuration values
 if (!isset($results_display_mode)) $results_display_mode = "boxes";
@@ -64,6 +74,9 @@ if ($use_datatables) {
     $smarty->assign('datatables_page_length_default', $datatables_page_length_default);
     $smarty->assign('datatables_auto_print', $datatables_auto_print);
 }
+$smarty->assign('version',$version);
+$smarty->assign('display_footer',$display_footer);
+$smarty->assign('logout_link',$logout_link);
 
 # Assign messages
 $smarty->assign('lang',$lang);
@@ -87,6 +100,7 @@ $smarty->registerPlugin("function", "convert_guid_value", "convert_guid_value");
 #==============================================================================
 $result = "";
 $page = "welcome";
+if (isset($default_page)) { $page = $default_page; }
 if (isset($_GET["page"]) and $_GET["page"]) { $page = $_GET["page"]; }
 if ( $page === "search" and !$use_quick_search ) { $page = "welcome"; }
 if ( $page === "advancedsearch" and !$use_advanced_search ) { $page = "welcome"; }

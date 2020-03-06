@@ -9,7 +9,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
               </button>
-              <a class="navbar-brand" href="index.php">
+              <a class="navbar-brand" href="index.php?page=welcome">
                 <img src="{$logo}" alt="{$msg_title}" class="menu-logo img-responsive" />
                 {$msg_title}
               </a>
@@ -31,14 +31,16 @@
                   <a href="index.php?page=gallery"><i class="fa fa-fw fa-user-circle"></i> {$msg_gallery}</a>
                 </li>
                 {/if}
-
                 {if $use_supannentite}
                 <li {if $page=="supannentite"}class="active"{/if}>
                   <a href="index.php?page=supannentite"><i class="fa fa-fw fa-building-o"></i> {$msg_supannentite}</a>
                 </li>
                 {/if}
-
-
+                {if $logout_link}
+                <li>
+                  <a href="{$logout_link}"><i class="fa fa-fw fa-sign-out"></i> {$msg_logout}</a>
+                </li>
+                {/if}
               </ul>
               {if $use_quick_search}
               <form class="navbar-form navbar-right" role="search" action="index.php?page=search" method="post">
